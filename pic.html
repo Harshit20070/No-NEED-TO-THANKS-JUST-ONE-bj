@@ -302,6 +302,36 @@
             color: #666;
             text-align: center;
         }
+    /* CLICK FLIP CARD */
+
+.flip-card {
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-inner {
+    position: relative;
+    width: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+    position: absolute;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+}
+
+.flip-back {
+    transform: rotateY(180deg);
+}
+
     </style>
 </head>
 
@@ -404,11 +434,42 @@
         <!-- Desktop Grid Gallery -->
         <div class="gallery-grid" id="desktopGallery">
             <!-- Card 1 -->
-            <div class="memory-card">
-                <div class="tooltip">You looked like a dream here 😍</div>
-                <div class="memory-image placeholder" style="">📸</div>
-                <div class="memory-message">Our First Garba night magic ✨</div>
+           <div class="memory-card flip-card" onclick="this.classList.toggle('flipped')">
+
+    <div class="tooltip">You looked like a dream here 😍</div>
+
+    <div class="flip-inner">
+
+        <!-- FRONT SIDE -->
+        <div class="flip-front">
+
+            <div class="memory-image"
+                 style="background-image:url('pic1.jpg');">
             </div>
+
+            <div class="memory-message">
+                Our First Garba night magic ✨
+            </div>
+
+        </div>
+
+        <!-- BACK SIDE -->
+        <div class="flip-back">
+
+            <div class="memory-image"
+                 style="background-image:url('pic2.jpg');">
+            </div>
+
+            <div class="memory-message">
+                That night I fell for you 💖
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
             <!-- Card 2 -->
             <div class="memory-card">
                 <div class="tooltip"></div>
@@ -649,4 +710,5 @@
 
 </body>
 </html>
+
 
